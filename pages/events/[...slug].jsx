@@ -1,8 +1,10 @@
 import { useRouter} from "next/router";
+
 import { getFilteredEvents } from "../../dummy-data";
 import EventsList from "../../components/events/event-list";
 import ResultsTitle from "../../components/events/results-title";
 import Button from "../../components/ui/button";
+import ErrorAlert from "../../components/ui/error-alert/error-alert";
 
 export default function FilteredEventsPage() {
     const router = useRouter();
@@ -28,7 +30,9 @@ export default function FilteredEventsPage() {
        {
         return (
             <>
-            <p>Invalid path! Please try again!</p>
+            <ErrorAlert>
+                <p>Invalid path! Please try again!</p>
+            </ErrorAlert>
             <div className="center">
                 <Button href="/events">Show All Events</Button>
             </div>
@@ -45,7 +49,9 @@ export default function FilteredEventsPage() {
        if(!filteredEvents || filteredEvents.length === 0) {
             return (
                 <>
-                <p>No events found!</p>
+                <ErrorAlert>
+                    <p>No events found!</p>
+                </ErrorAlert>
                 <div className="center">
                     <Button href="/events">Show All Events</Button>
                 </div>

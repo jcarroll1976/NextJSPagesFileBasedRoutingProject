@@ -19,10 +19,8 @@ export default function EventDetailPage() {
         return (
             <>
                 <ErrorAlert><p>No event found!</p></ErrorAlert>;
-                <div>
-                    <Button className="center">
-                        Show All Events
-                    </Button>
+                <div className="center">
+                    <Button link="/events">Show All Events</Button>
                 </div>
             </>
         )

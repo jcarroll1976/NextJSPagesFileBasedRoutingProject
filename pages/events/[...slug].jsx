@@ -34,7 +34,7 @@ export default function FilteredEventsPage() {
                 <p>Invalid path! Please try again!</p>
             </ErrorAlert>
             <div className="center">
-                <Button href="/events">Show All Events</Button>
+                <Button link="/events">Show All Events</Button>
             </div>
             </>
         )
@@ -53,7 +53,7 @@ export default function FilteredEventsPage() {
                     <p>No events found!</p>
                 </ErrorAlert>
                 <div className="center">
-                    <Button href="/events">Show All Events</Button>
+                    <Button link="/events">Show All Events</Button>
                 </div>
                 </>
             )

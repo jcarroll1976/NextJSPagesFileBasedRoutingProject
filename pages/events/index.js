@@ -2,10 +2,11 @@ import { useRouter } from "next/router";
 
 import EventsList from "../../components/events/event-list";
 import EventsSearch from "../../components/events/events-search";
-import { getAllEvents } from "../../dummy-data"
+import { getAllEvents } from "../../helpers/api-util";
+import Head from "next/head";
 
-export default function EventsPage() {
-    const events = getAllEvents();
+export default function EventsPage(props) {
+    const {events} = props;
     const router = useRouter();
 
     function findEventsHandler(year,month) {
@@ -15,9 +16,25 @@ export default function EventsPage() {
     }
     return (
         <div>
+            <Head>
+                <title>All Events</title>
+                <meta name="description" content="Find a lot of great events that allow you to evolve..." />
+            </Head>
             <EventsSearch onSearch={findEventsHandler} />
             <EventsList items={events} />
         </div>
        
     )
 }
+
+ export async function getStaticProps() {
+    const events = await getAllEvents();
+    return {
+        props: {
+            events: events,
+        },
+        revalidate: 60,
+    }
+ }
+ 
+
